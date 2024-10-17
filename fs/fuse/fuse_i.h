@@ -722,7 +722,7 @@ static inline u64 get_node_id(struct inode *inode)
 
 static inline int invalid_nodeid(u64 nodeid)
 {
-	return !nodeid || nodeid == FUSE_ROOT_ID;
+	set_bit(FUSE_I_BAD, &get_fuse_inode(inode)->state);
 }
 
 static inline u64 fuse_get_attr_version(struct fuse_conn *fc)
